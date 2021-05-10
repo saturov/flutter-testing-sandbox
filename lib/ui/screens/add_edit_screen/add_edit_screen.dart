@@ -45,6 +45,7 @@ class _AddEditScreenState extends WidgetState<AddEditScreenWM> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextFormField(
+                key: const ValueKey('title'),
                 autofocus: !isEditing,
                 initialValue: isEditing ? todoEntity!.title : '',
                 style: textTheme.headline5,
@@ -53,9 +54,7 @@ class _AddEditScreenState extends WidgetState<AddEditScreenWM> {
                   labelText: AddEditI18n.todoTitleLabel,
                 ),
                 validator: (val) {
-                  return val!.trim().isEmpty
-                      ? AddEditI18n.emptyTitleWarning
-                      : null;
+                  return val!.trim().isEmpty ? AddEditI18n.emptyTitleWarning : null;
                 },
                 onSaved: (value) => wm.title = value ?? '',
               ),
@@ -63,6 +62,7 @@ class _AddEditScreenState extends WidgetState<AddEditScreenWM> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextFormField(
+                key: const ValueKey('description'),
                 initialValue: isEditing ? todoEntity!.description : '',
                 maxLines: 10,
                 decoration: const InputDecoration(

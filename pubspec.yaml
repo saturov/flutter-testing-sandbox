@@ -20,8 +20,15 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
   mocktail: ^0.1.1 
   surf_lint_rules: ^1.0.0
+
+dependency_overrides:
+  crypto: ^3.0.0
+  args: ^2.0.0
+  convert: ^3.0.0
 
 flutter:
   uses-material-design: true
