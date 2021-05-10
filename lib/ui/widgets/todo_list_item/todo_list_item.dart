@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mwwm/mwwm.dart';
-import 'package:provider/provider.dart';
 import 'package:relation/relation.dart';
 import 'package:todos/models/todo_entity.dart';
-import 'package:todos/modules/provider.dart';
-import 'package:todos/ui/navigation/navigation.dart';
 import 'package:todos/ui/widgets/todo_list_item/todo_list_item_wm.dart';
 
 class TodoListItem extends CoreMwwmWidget {
-  TodoListItem({
-    required int todoId,
+  const TodoListItem({
+    required this.wmBuilder,
     Key? key,
-  }) : super(
-            key: key,
-            widgetModelBuilder: (context) => TodoListItemWM(
-                  Navigation(context),
-                  context.read<AppProvider>().todosRepository,
-                  todoId,
-                ));
+  }) : super(key: key, widgetModelBuilder: wmBuilder);
+
+  final TodoListItemWM Function(BuildContext context) wmBuilder;
 
   @override
   State<StatefulWidget> createState() => _TodoListItemState();

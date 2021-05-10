@@ -9,6 +9,7 @@ import 'package:todos/ui/screens/todo_list_screen/todo_list_screen_i18n.dart';
 import 'package:todos/ui/screens/todo_list_screen/todo_list_screen_wm.dart';
 import 'package:todos/ui/widgets/filter_button/filter_button.dart';
 import 'package:todos/ui/widgets/todo_list_item/todo_list_item.dart';
+import 'package:todos/ui/widgets/todo_list_item/todo_list_item_wm.dart';
 
 class TodoListScreen extends CoreMwwmWidget {
   TodoListScreen({Key? key})
@@ -41,7 +42,13 @@ class _TodoListScreenState extends WidgetState<TodoListScreenWM> {
                 key: ValueKey(todo),
                 onDismissed: (_) => wm.removeTodo(todo),
                 child: TodoListItem(
-                  todoId: todo.id,
+                  wmBuilder: (context) {
+                    return TodoListItemWM(
+                      Navigation(context),
+                      context.read<AppProvider>().todosRepository,
+                      todo.id,
+                    );
+                  },
                 ),
               );
             },
