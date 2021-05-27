@@ -23,16 +23,16 @@ void main() {
 
     expect(find.byType(AddEditScreen), findsOneWidget);
 
-    await tester.enterText(find.byKey(const ValueKey('title')), 'Прилететь в Екб');
+    await tester.enterText(find.byKey(const ValueKey('title')), 'Прилететь в Иннополис');
     await tester.pump();
-    await tester.enterText(find.byKey(const ValueKey('description')), 'Выступить на DUMP');
+    await tester.enterText(find.byKey(const ValueKey('description')), 'Выступить на Мир.Труд.Мобайл!');
     await tester.pump();
     await tester.tap(find.byType(FloatingActionButton));
     await tester.pumpAndSettle();
 
     expect(find.byType(TodoListScreen), findsOneWidget);
 
-    expect(find.text('Прилететь в Екб'), findsOneWidget);
-    expect(find.text('Выступить на DUMP'), findsOneWidget);
+    expect(find.text('Прилететь в Иннополис'), findsOneWidget);
+    expect(find.text('Выступить на Мир.Труд.Мобайл!'), findsOneWidget);
   });
 }
